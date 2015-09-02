@@ -62,9 +62,14 @@
     <Compile Include="Extensions.cs" />
     <Compile Include="HttpClient.cs" />
     <Compile Include="JsonSerializer.cs" />
+    <Compile Include="Models\Converters\TradeConverter.cs" />
+    <Compile Include="Models\Markets\Error.cs" />
+    <Compile Include="Models\Markets\RecentTrades.cs" />
+    <Compile Include="Models\Markets\OrderBook.cs" />
     <Compile Include="RestClient.cs" />
-    <Compile Include="Models\Ticker.cs" />
+    <Compile Include="Models\Markets\Ticker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\OrderBookMediaTypeFormatter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

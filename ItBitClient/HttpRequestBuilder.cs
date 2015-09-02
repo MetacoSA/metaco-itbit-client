@@ -42,16 +42,17 @@ namespace Metaco.ItBit
 			var message = messageBuilder.Build();
 			var request = new HttpRequestMessage(message.Method, message.RequestUri);
 
-			var timestamp = Timestamp;
-			var nonce = Nonce;
+			if (message.RequireAuthentication)
+			{
+				var timestamp = Timestamp;
+				var nonce = Nonce;
 
-			var signature = _signer.Sign(request.Method.Method, request.RequestUri.ToString(), timestamp, nonce, "body");
+				var signature = _signer.Sign(request.Method.Method, request.RequestUri.ToString(), timestamp, nonce, "body");
 
-			request.Headers.Add("Authorization", _clientKey + ':' + signature);
-			request.Headers.Add("X-Auth-Timestamp", timestamp);
-			request.Headers.Add("X-Auth-Nonce", nonce);
-			request.Headers.Add("Content-Type", "application/json");
-
+				request.Headers.Add("Authorization", _clientKey + ':' + signature);
+				request.Headers.Add("X-Auth-Timestamp", timestamp);
+				request.Headers.Add("X-Auth-Nonce", nonce);
+			}
 			return request;
 		}
 	}

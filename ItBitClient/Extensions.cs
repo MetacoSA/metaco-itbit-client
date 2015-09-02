@@ -6,9 +6,9 @@ namespace Metaco.ItBit
 {
 	public static partial class Extensions
 	{
-		public static Task<T> ReadAsAsync<T>(this Task<HttpResponseMessage> task, params MediaTypeFormatter[] formatters)
+		public static Task<T> ReadAsAsync<T>(this HttpResponseMessage response, params MediaTypeFormatter[] formatters)
 		{
-			return task.Result.Content.ReadAsAsync<T>(formatters);
+			return response.Content.ReadAsAsync<T>(formatters);
 		}
 	}
 }
