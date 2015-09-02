@@ -11,7 +11,7 @@ namespace Metaco.ItBit
 		private readonly string _clientKey;
 		private static uint _nonce;
 		private readonly HttpRequestMessageSigner _signer;
-		private static readonly DateTime _januryFirst1970 = new DateTime(1970, 1, 1);
+		private static readonly DateTime JanuryFirst1970 = new DateTime(1970, 1, 1);
 
 		private string Nonce
 		{
@@ -25,7 +25,7 @@ namespace Metaco.ItBit
 		{
 			get
 			{
-				var time = DateTime.UtcNow - _januryFirst1970;
+				var time = DateTime.UtcNow - JanuryFirst1970;
 				var timestamp = (long)time.TotalMilliseconds;
 				return Convert.ToString(timestamp);
 			}

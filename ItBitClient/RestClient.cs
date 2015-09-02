@@ -2,9 +2,6 @@
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Threading.Tasks;
-using Metaco.ItBit.Models;
-using Metaco.ItBit.Models.Markets;
-using Metaco.ItBit.Serialization;
 
 namespace Metaco.ItBit
 {
@@ -20,7 +17,7 @@ namespace Metaco.ItBit
 		public Task<Ticker> GetTickerAsync(string symbol)
 		{
 			var request = new TickerMessageBuilder(symbol);
-			return _client.SendAsync(request).ReadAsAsync<Ticker, JsonMediaTypeFormatter>();
+			return _client.SendAsync(request).ReadAsAsync<Ticker>();
 		}
 
 		public Task<OrderBook> GetOrderBookAsync(string symbol)
@@ -32,38 +29,27 @@ namespace Metaco.ItBit
 		public Task<RecentTrades> GetRecentTradesAsync(string symbol, int? since=null)
 		{
 			var request = new RecentTradesMessageBuilder(symbol, since);
-			return _client.SendAsync(request).ReadAsAsync<RecentTrades, JsonMediaTypeFormatter>();
+			return _client.SendAsync(request).ReadAsAsync<RecentTrades>();
+		}
+
+		public Task<Wallet> GetAllWalletsAsync(Guid userId, Page page)
+		{
+			var request = new WalletMessageBuilder(userId, page);
+			return _client.SendAsync(request).ReadAsAsync<Wallet>();
 		}
 	}
 
 	public static partial class Extensions
 	{
-		internal static async Task<T> ReadAsAsync<T>(this Task<HttpResponseMessage> task, MediaTypeFormatter formatter)
+		public static async Task<T> ReadAsAsync<T>(this HttpResponseMessage response, params MediaTypeFormatter[] formatters)
 		{
-			var response = await task;
-			return await response.ReadAsAsync<T>(new MediaTypeFormatter[] { formatter });
-		}
-
-		internal static async Task<TResult> ReadAsAsync<TResult, TMediaTypeFormatter>(this Task<HttpResponseMessage> task) where TMediaTypeFormatter : MediaTypeFormatter, new()
-		{
-			var response = await task;
 			if (!response.IsSuccessStatusCode)
 			{
-				var error = await response.ReadAsAsync<Error>(new MediaTypeFormatter[] { new JsonMediaTypeFormatter() });
+				var error = await response.Content.ReadAsAsync<Error>(new MediaTypeFormatter[] { new JsonMediaTypeFormatter() });
 				throw new ItBitApiException(error);
 			}
-			return await response.ReadAsAsync<TResult>(new MediaTypeFormatter[] {new TMediaTypeFormatter()});
-		}
-	}
 
-	public class ItBitApiException : Exception
-	{
-		public Error Error { get; private set; }
-
-		public ItBitApiException(Error error)
-			:base(error.Description)
-		{
-			Error = error;
+			return await response.Content.ReadAsAsync<T>(formatters);
 		}
 	}
 }

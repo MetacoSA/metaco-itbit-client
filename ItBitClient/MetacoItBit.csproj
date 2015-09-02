@@ -57,15 +57,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HttpRequestBuilder.cs" />
-    <Compile Include="MessageBuilder.cs" />
-    <Compile Include="Extensions.cs" />
-    <Compile Include="HttpClient.cs" />
-    <Compile Include="JsonSerializer.cs" />
-    <Compile Include="Models\Converters\TradeConverter.cs" />
-    <Compile Include="Models\Markets\Error.cs" />
+    <Compile Include="HttpClient\HttpRequestBuilder.cs" />
+    <Compile Include="ItBitApiException.cs" />
+    <Compile Include="Messages\IMessageBuilder.cs" />
+    <Compile Include="Messages\Trading\OrderBookMessageBuilder.cs" />
+    <Compile Include="Models\Markets\RecentTrade.cs" />
+    <Compile Include="Models\Markets\Trade.cs" />
+    <Compile Include="Utils\StringExtensions.cs" />
+    <Compile Include="HttpClient\Extensions.cs" />
+    <Compile Include="HttpClient\HttpClient.cs" />
+    <Compile Include="Messages\Markets\OrderBookMessageBuilder.cs" />
+    <Compile Include="Messages\Markets\RecentTradesMessageBuilder.cs" />
+    <Compile Include="Messages\RequestMessage.cs" />
+    <Compile Include="Messages\Markets\TickerMessageBuilder.cs" />
+    <Compile Include="Messages\Converters\TradeConverter.cs" />
+    <Compile Include="Models\Error.cs" />
     <Compile Include="Models\Markets\RecentTrades.cs" />
     <Compile Include="Models\Markets\OrderBook.cs" />
+    <Compile Include="Models\Trading\Balance.cs" />
+    <Compile Include="Models\Trading\Wallet.cs" />
     <Compile Include="RestClient.cs" />
     <Compile Include="Models\Markets\Ticker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,6 +84,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.10\tools\Microsoft.Bcl.Build.targets')" />

@@ -35,31 +35,6 @@ namespace Metaco.ItBit
 			var request = _requestBuilder.Build(messageBuilder);
 			return await CreateClient().SendAsync(request).ConfigureAwait(false);
 		}
-
-
-		//public static void HandleInvalidResponse(HttpResponseMessage response)
-		//{
-		//	MetacoErrorResult metacoError;
-		//	string content=null;
-		//	Exception inner = null;
-		//	try
-		//	{
-		//		content = response.Content.ReadAsStringAsync().Result;
-		//		metacoError = JsonConvert.DeserializeObject<MetacoErrorResult>(content);
-		//		if (string.IsNullOrEmpty(metacoError.MetacoError))
-		//			throw new MetacoClientException(metacoError, ErrorType.UnknownError, content, (int) response.StatusCode, null);
-		//	}
-		//	catch (Exception e)
-		//	{
-		//		metacoError = new MetacoErrorResult {
-		//			MetacoError = "", 
-		//			Status = (int) response.StatusCode
-		//		};
-		//		inner = e;
-		//	}
-		//	var errorType = MetacoErrorsDefinitions.GetErrorType(metacoError);
-		//	throw new MetacoClientException(metacoError, errorType, content, (int)response.StatusCode, inner);
-		//}
 	}
 
 

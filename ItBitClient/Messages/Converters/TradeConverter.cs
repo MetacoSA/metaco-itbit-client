@@ -1,8 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections;
 
-namespace Metaco.ItBit.Models.Converters
+namespace Metaco.ItBit
 {
 	public sealed class TradeConverter : JsonConverter
 	{

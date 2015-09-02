@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Metaco.ItBit.Models 
+namespace Metaco.ItBit 
 {
 	public class OrderBook
 	{
@@ -11,17 +11,5 @@ namespace Metaco.ItBit.Models
 		// highest bid price
 		[JsonProperty("bids")]
 		public Trade[] Bids { get; set; }
-	}
-
-	public class Trade
-	{
-		public Trade(decimal price, decimal amount)
-		{
-			Price = price;
-			Amount = amount;
-		}
-
-		public decimal Price { get; set; }
-		public decimal Amount { get; set; }
 	}
 }

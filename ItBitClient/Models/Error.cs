@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace Metaco.ItBit.Models 
+namespace Metaco.ItBit 
 {
 	public class Error
 	{
