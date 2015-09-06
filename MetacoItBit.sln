@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetacoItBit", "ItBitClient\MetacoItBit.csproj", "{C6870018-46DD-4823-EABF-B745E3B75790}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetacoItBit", "MetacoItBitClient\MetacoItBit.csproj", "{C6870018-46DD-4823-EABF-B745E3B75790}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B837F71A-A06D-44BE-A751-C7833A3D7F17}"
 	ProjectSection(SolutionItems) = preProject
@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B837F7
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetacoItBit.Tests", "MetacoItBit.Tests\MetacoItBit.Tests.csproj", "{6D073DB1-F8E6-4B96-9644-7D313B58B934}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetacoItBit.Tests", "MetacoItBitClient.Tests\MetacoItBit.Tests.csproj", "{6D073DB1-F8E6-4B96-9644-7D313B58B934}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
