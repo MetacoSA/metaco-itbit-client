@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace MetacoItBit.Tests
 {
-	[TestFixture(Ignore = true)]
+	[TestFixture]
 	public class TradingTest
 	{
 		private const string _secretKey = "your-secret-key";
