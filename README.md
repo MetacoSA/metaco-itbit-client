@@ -12,11 +12,37 @@ With nuget :
 
 Go on the [nuget website](https://www.nuget.org/packages/Metaco.ItBit/) for more information.
 
-
 Usage
 ----------------------------------------------
 
-You can use our [Unit tests](https://github.com/MetacoSA/metaco-itbit-client/tree/master/Metaco.ItBit.Tests) to learn the basics or the links in the summary of this document.
+You can use our [Unit tests](https://github.com/MetacoSA/metaco-java-client/tree/master/src/test/java/com/metaco/api) to learn the basics or the links in the summary of this document.
+
+Testing
+----------------------------------------------
+You need a [itBit](https://exchange.itbit.com/signup) account for setting the Trading unit tests.
+
+* Go to the TradeTest.cs file, open it and set your credential:
+
+    ```
+    TradeClient client = new TradeClient("your-client-key-here", "your-secret-key-here");
+    ```
+
+* Onces done, just run the test.
+
+Contributing
+----------------------------------------------
+1. Fork this repository and make your changes in your fork
+2. Add or Update the tests and run them to make sure they pass
+3. Commit and push your changes to your fork `git push origin master`
+4. Submit a pull request and we will handle the rest :)
+
+Known Issues / Gotcha
+----------------------------------------------
+- There are three missing methods
+ - [New Wallet Transfer](https://api.itbit.com/docs#trading-new-wallet-transfer),
+ - [Get Trades](https://api.itbit.com/docs#trading-get-trades) and,
+ - [New Wallet](https://api.itbit.com/docs#trading-new-wallet)
+
 
 License
 ----------------------------------------------

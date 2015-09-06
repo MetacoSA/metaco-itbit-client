@@ -55,9 +55,4 @@ namespace Metaco.ItBit
 			return SendAsync(request).ReadAsAsync<RecentTrades>();
 		}
 	}
-
-	internal static class Configuration
-	{
-		public static Uri ApiUrl = new Uri("https://beta-api.itbit.com/v1/", UriKind.RelativeOrAbsolute);
-	}
 }
