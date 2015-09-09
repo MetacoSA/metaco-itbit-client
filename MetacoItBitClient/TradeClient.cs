@@ -125,7 +125,7 @@ namespace Metaco.ItBit
 			return SendAsync(request).ReadAsAsync<Order>();
 		}
 
-		public Task<CryptoCurrencyWithdrawalResult> WithdrawCryptoCurrency(Guid walletId, NewCryptoCurrencyWithdrawal withdraw)
+		public Task<CryptoCurrencyWithdrawalResult> WithdrawCryptoCurrencyAsync(Guid walletId, NewCryptoCurrencyWithdrawal withdraw)
 		{
 			if (walletId == Guid.Empty)
 				throw new ArgumentException("walletId");
@@ -136,7 +136,7 @@ namespace Metaco.ItBit
 			return SendAsync(request).ReadAsAsync<CryptoCurrencyWithdrawalResult>();
 		}
 
-		public Task<CryptoCurrencyDepositResult> DepositCryptoCurrency(Guid walletId, NewCryptoCurrencyDeposit deposit)
+		public Task<CryptoCurrencyDepositResult> DepositCryptoCurrencyAsync(Guid walletId, NewCryptoCurrencyDeposit deposit)
 		{
 			if (walletId == Guid.Empty)
 				throw new ArgumentException("walletId");

@@ -55,7 +55,7 @@ namespace MetacoItBit.Tests
 		public async void CanWithdrawCryptoCurrency()
 		{
 			var withdrawal = new NewCryptoCurrencyWithdrawal(CurrencyCode.XBT, 10, "18e143cdVYYkQesFsycgSoDEQAQQ2p9uWC");
-			var withdrawalResult = await _client.WithdrawCryptoCurrency(_walletId, withdrawal);
+			var withdrawalResult = await _client.WithdrawCryptoCurrencyAsync(_walletId, withdrawal);
 
 		}
 
