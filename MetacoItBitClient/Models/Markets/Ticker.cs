@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using Newtonsoft.Json.Converters;
 
 namespace Metaco.ItBit 
 {
@@ -7,7 +8,8 @@ namespace Metaco.ItBit
 	{
 		// currency pair for market. e.g. XBTUSD for USD Bitcoin market.
 		[JsonProperty("pair")]
-		public string Pair { get; set; }
+		[JsonConverter(typeof(StringEnumConverter))]
+		public TickerSymbol Pair { get; set; }
 
 		// highest bid price
 		[JsonProperty("bid")]

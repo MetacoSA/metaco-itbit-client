@@ -28,28 +28,28 @@ namespace Metaco.ItBit
 			return await CreateClient().SendAsync(request).ConfigureAwait(false);
 		}
 
-		public Task<Ticker> GetTickerAsync(string symbol)
+		public Task<Ticker> GetTickerAsync(TickerSymbol symbol)
 		{
-			if (string.IsNullOrEmpty(symbol))
-				throw new ArgumentNullException("symbol");
+			if (!Enum.IsDefined(typeof(TickerSymbol), symbol))
+				throw new ArgumentException("symbol");
 
 			var request = new GetTickerMessageBuilder(symbol);
 			return SendAsync(request).ReadAsAsync<Ticker>();
 		}
 
-		public Task<OrderBook> GetOrderBookAsync(string symbol)
+		public Task<OrderBook> GetOrderBookAsync(TickerSymbol symbol)
 		{
-			if (string.IsNullOrEmpty(symbol))
-				throw new ArgumentNullException("symbol");
+			if (!Enum.IsDefined(typeof(TickerSymbol), symbol))
+				throw new ArgumentException("symbol");
 
 			var request = new GetOrderBookMessageBuilder(symbol);
 			return SendAsync(request).ReadAsAsync<OrderBook, OrderBookMediaTypeFormatter>();
 		}
 
-		public Task<RecentTrades> GetRecentTradesAsync(string symbol, int? since=null)
+		public Task<RecentTrades> GetRecentTradesAsync(TickerSymbol symbol, int? since = null)
 		{
-			if (string.IsNullOrEmpty(symbol))
-				throw new ArgumentNullException("symbol");
+			if (!Enum.IsDefined(typeof(TickerSymbol), symbol))
+				throw new ArgumentException("symbol");
 
 			var request = new GetRecentTradesMessageBuilder(symbol, since);
 			return SendAsync(request).ReadAsAsync<RecentTrades>();
